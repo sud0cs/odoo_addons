@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="app_prova.calendar" model="ir.ui.view">
+      <field name="model">app_prova.app_prova</field>
+      <field name="name">app_prova calendar</field>
+        <field name="arch" type="xml">
+            <!-- Definimos las fechas (inicio y final)
+                asi como colo del proyecto para la vista calendario
+                PD: el unico dato obligatorio es "date_start"
+            -->
+          <calendar date_start="date_assign">
+            <field name="tarea"/>
+            <field name="date_assign"/>
+          </calendar>
+        </field>
+    </record>
+
+    <record id='action_tareas_calender' model='ir.actions.act_window'>
+        <field name="name">Mis tareas (Calendario)</field>
+        <field name="res_model">app_prova.app_prova</field>
+        <field name="view_mode">calendar</field>
+        <!-- Indicamos como contexto que la vista de referencia es la vista tareas_calender_view
+        mas información en https://www.odoo.com/documentation/15.0/developer/reference/backend/views.html 
+        -->
+        
+        <field name="context">{'calendar_view_ref': 'my_project.tareas_calender_view'}</field>
+    </record>
+    <menuitem name="Calendario" id="app_prova.menu_calendar" parent="app_prova.menu_root" action="action_tareas_calender"/>
+</odoo>
+

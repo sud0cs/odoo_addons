@@ -11,7 +11,7 @@ class app_prova(models.Model):
     prioridad = fields.Integer()
     urgente = fields.Boolean(compute="_value_urgente", store=True)
     realizada = fields.Boolean()
-
+    date_assign = fields.Date(readonly=False)
     @api.depends('prioridad')
     def _value_urgente(self):
         for record in self:
