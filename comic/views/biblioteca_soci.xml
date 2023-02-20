@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Definimos como mostramos la vista en el modelo -->
+    <record id='biblioteca_soci_action' model='ir.actions.act_window'>
+        <field name="name">Soci</field>
+        <!-- Indicamos a que modelo aplica -->
+        <field name="res_model">biblioteca.soci</field>
+        <!-- Indicamos que los comics pueden verse en tree para el listado,
+            y en form para la creación/edición -->
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Simple menu item, sin más utilidad que la didáctica -->
+    <menuitem name="Socis" id="biblioteca_soci_menu" parent="biblioteca_base_menu" action="biblioteca_soci_action"/>
+
+    <!-- Definición de la Vista formulario -->
+    <record id="biblioteca_soci_view_form" model="ir.ui.view">
+        <field name="name">Formular Soci</field>
+        <field name="model">biblioteca.soci</field>
+        <field name="arch" type="xml">
+            <form>
+                <!-- Creamos un boton "archivar". 
+                    Al llamarse "archivar" se encarga de llamar al metodo "archivar"
+                    del modelo del que hereda "biblioteca_comic".
+                    Este metodo archivar cambie el estado del atributo del modelo "activo"
+                -->
+                <group>
+                    <group>
+                        <field name="nom"/>
+                        <!-- Utilizamos el Widget "many2many_tags" para que la relación
+                            muchos a muchos se vea en la interfaz como etiquetas -->
+                        <field name="cognom"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Definición de la vista Tree -->
+    <record id="biblioteca_soci_view_tree" model="ir.ui.view">
+        <field name="name">Lista de Socis de la biblioteca</field>
+        <field name="model">biblioteca.soci</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="nom"/>
+                <field name="cognom"/>                        
+            </tree>
+        </field>
+    </record>
+
+    <!-- Definición de la vista busqueda-->
+    <record id="biblioteca_soci_view_search" model="ir.ui.view">
+        <field name="name">Cerca de Socis en la biblioteca</field>
+        <field name="model">biblioteca.soci</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="nom"/>
+                <field name="cognom"/>
+                <!-- Indicamos que para si filtramos por los del dominio "autor_ids=false" 
+                se muestre el texto "Sin autor"-->
+            </search>
+        </field>
+    </record>
+
+</odoo>
