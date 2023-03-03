@@ -43,6 +43,7 @@
         <field name="model">biblioteca.soci</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="id"/>
                 <field name="nom"/>
                 <field name="cognom"/>                        
             </tree>
