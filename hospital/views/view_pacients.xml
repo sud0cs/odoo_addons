@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="hospital_pacient_action" model="ir.actions.act_window">
+			<field name="name">Hospital de comics</field>
+			<field name="res_model">pacient</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem name="Hospital" id="root_menu" action="hospital_pacient_action"/>
+		<menuitem name="Hospital2" parent="root_menu" id="child"/>
+
+		<record id="form_pacients" model="ir.ui.view">
+			<field name="name">Formulari Pacients</field>
+			<field name="model">pacient</field>
+			<field name="arch" type="xml">
+				<form>
+					<field name="nom"/>
+					<field name="simptomes"/>
+				</form>
+			</field>
+		</record>
+
+		<record id="tree_pacients" model="ir.ui.view">
+			<field name="name">Llista Pacients</field>
+			<field name="model">pacient</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="nom"/>
+					<field name="simptomes"/>
+				</tree>
+			</field>
+		</record>
+	</data>
+</odoo>
